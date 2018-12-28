@@ -1,21 +1,27 @@
 #!/bin/bash
-
+WORKING_DIR="$PWD"
 export PATH="$(dirname $0):$PATH"
+scriptDir="$(dirname $0)"
+cd "$scriptDir"
+scriptDir="$PWD"
+cd "$WORKING_DIR"
 
 # Is it a windows or a dos binary ?
 if [ "$1" = "--force-dos" ]; then
+	echo "--force-dos is set. Dosbox will be used"
 	wrapper="dosbox-wrapper"
 	shift
 fi
 
 if [ "$1" = "--force-win" ]; then
+	echo "--force-win is set. Wine will be used"
 	wrapper="wine.real"
 	shift
 fi
 
 windows_app="$1"
 
-if [ ! -e "$wrapper" ]; then
+if [ ! "$wrapper" ]; then
 	if [ ! -e "$windows_app" ] ; then 
 		# We are in path, it's wine
 		wrapper="wine.real"
@@ -27,7 +33,7 @@ if [ ! -e "$wrapper" ]; then
 fi
 
 export DYLD_LIBRARY_PATH="/usr/lib/"
-export DYLD_FALLBACK_LIBRARY_PATH="$PWD/../lib/"
+export DYLD_FALLBACK_LIBRARY_PATH="$scriptDir/../lib/"
 [ "$WINEPREFIX" = "" ] && export WINEPREFIX="$HOME/.wine/"
 exec "$wrapper" "$@"
 exit 0
