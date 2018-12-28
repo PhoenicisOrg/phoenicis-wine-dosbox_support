@@ -7,7 +7,7 @@ When running wine executable.exe, it will:
 
 It supports macOS and linux wine builds
 
-Pre-built binaries are available here: http://playonlinux.com/wine/.
+Pre-built binaries are available here: https://www.playonlinux.com/wine/.
 
 This tool is mainly meant to be used by phoenicis-winebuild. We advise you to use it to get consistent and working builds. 
 
