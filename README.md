@@ -15,5 +15,10 @@ This tool is mainly meant to be used by phoenicis-winebuild. We advise you to us
 * Patch a wine version: bash patch-wine.sh /path/of/wine/installation 
 * Install dosbox on you system, or place the binary inside /path/of/wine/installation/bin, and the dynamic librairies inside /path/of/wine/installation/lib 
 
+## Noticeable behavior:
+* If WINEDEBUG is set to -all, dosbox will automatically exit once the program is closed 
+* If an autoexec.bat file is present in drive_c, it will be executed when dosbox is started 
+* --force-dos and --force-win can be used to bypass the .exe detection step and force the usage of dosbox or wine 
+
 ## Disclaimer: 
 This tool is meant to patch standalone wine builds. Do not use this tool as root, or with any system-wide wine installation! 
